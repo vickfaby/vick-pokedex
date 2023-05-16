@@ -1,0 +1,18 @@
+.title{
+    display: flex;
+    height: 3rem;
+  }
+  
+  .title> p {
+    font-family: 'Major Mono Display', monospace;
+    color: #FFE603;
+    font-size: 3rem;
+    margin: 0.3rem 0 0 1rem;
+  }
+  
+  .linea-horizontal{
+    border-bottom: 1px solid #20DBD8;
+    height: 3rem;
+    width: 20rem;
+    margin-left: 1rem;
+  }
