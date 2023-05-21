@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/TituloPokedex.css'
+import '../styles/TituloPokedex.scss'
 
 function TituloPokedex() {
   return (
@@ -10,4 +10,4 @@ function TituloPokedex() {
   )
 }
 
-export default TituloPokedex
+export default TituloPokedex;

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/MarcaVickFaby.css';
+import '../styles/MarcaVickFaby.scss';
 
 function MarcaVickFaby() {
   return (

@@ -1,11 +1,12 @@
+@import 'vars';
 
 @font-face {
     font-family: 'Century Gothic';
     src: url('../../fonts/CenturyGothic/CenturyGothic.ttf') format('truetype');
 }
 .MarcaVickFaby{
-    color: #FFE603;
-    font-family: 'Century Gothic', sans-serif;
+    color: var(--color-letras-amarillas);
+    font-family: var(--fuente-general);
     width: 10rem;
     height: 2rem;
     font-size: 1.5rem;

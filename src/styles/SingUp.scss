@@ -1,0 +1,110 @@
+@import 'vars';
+
+
+
+.SingUp {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(9, 1fr);
+  height: 100vh;
+  width: 100vw;
+  background: var(--color-background);
+  justify-items: center;
+}
+
+
+
+.SingUp > p:nth-child(2) {  //todo p dentro de .Singup dentro del 2do hijo
+  color: var(--color-font-blue);
+  font-size: 2rem;
+  margin: 3rem 0 0 0;
+}
+
+.info-policy {
+  color: var(--color-cards-lines);
+  width: 60vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+.info-policy > p {
+  //todo hijo p de .info-policy
+  font-size: 1.5rem;
+  margin-left: 0.5rem;
+}
+
+.info-policy > p:first-child{
+  margin-left: 0;
+}
+
+.info-policy > p:nth-child(2) {
+  font-weight: bolder;
+  font-style: italic;
+}
+.info-policy > p:nth-child(4) {
+  font-style: italic;
+  font-weight: bolder;
+}
+
+.SingUp > p:nth-child(7) {
+  //todo p dentro de .Singup dentro del 7mo hijo
+  font-size: 1.2rem;
+  color: var(--color-font-blue);
+  width: 60vw;
+  align-self: end;
+  text-align: start;
+  margin-bottom: 1rem;
+}
+
+.titleCreateAccount {
+  margin-top: 10rem;
+}
+
+.primaryButton {
+  font-weight: bolder;
+  font-size: 1.6rem;
+  height: 3rem;
+  width: 60vw;
+  background: #9f9935;
+  border: 2px solid var(--color-font-yellow);
+  border-radius: 0.5rem;
+  margin: 2rem 0 0 0;
+}
+
+.secondaryButton {
+  color: var(--color-font-blue);
+  font-size: 1.6rem;
+  height: 3rem;
+  width: 60vw;
+  background: var(--color-background-secondary-button);
+  border: 2px solid var(--color-cards-lines);
+  border-radius: 0.5rem;
+}
+
+.tertiaryButton {
+  color: var(--color-font-blue);
+  font-size: 1.6rem;
+  height: 3rem;
+  width: 60vw;
+  background: var(--color-background-tertiary-button);
+  border: 1px solid var(--color-font-yellow);
+  border-radius: 0.6rem;
+}
+
+.orLine {
+  border-bottom: 1px solid var(--color-font-blue);
+  height: 3rem;
+  width: -webkit-fill-available;
+}
+.orSeparator {
+  display: flex;
+  width: 60vw;
+}
+
+.orSeparator > span {
+  color: var(--color-font-blue);
+  font-size: 1.6rem;
+  margin: 2rem 2rem 0 2rem;
+}
