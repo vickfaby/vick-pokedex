@@ -1,0 +1,15 @@
+@import 'vars';
+
+.PrivacyPolicy{
+    background: var(--color-background);
+    height: 100vh;
+    //padding: 0 2rem 0 2rem;
+}
+
+span {
+    color: var(--color-font-blue);
+    height: 3rem;
+    justify-self: start;
+    margin: 2rem 0 0 2rem;
+}
+ 

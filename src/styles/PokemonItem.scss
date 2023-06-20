@@ -1,0 +1,18 @@
+@import 'vars';
+
+.PokemonItem {
+    //border: 1px solid var(--color-cards-lines);
+    width: 6rem;
+}
+.PokemonItem-image {
+    border-bottom: 1px solid var(--color-cards-lines);
+}
+.PokemonItem-image img:first-child{
+    width: 16vw;
+    // height: 6rem;
+    object-fit: cover;
+}
+
+.PokemonItem > p {
+    color: var(--color-font-blue);
+}

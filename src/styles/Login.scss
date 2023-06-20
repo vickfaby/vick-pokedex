@@ -1,0 +1,39 @@
+@import 'vars';
+
+.Login {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(10, 1fr);
+    height: 100vh;
+    width: 100vw;
+    background: var(--color-background);
+    justify-items: center;
+  }
+
+  .Login > p:nth-child(8){
+    font-size: 1.2rem;
+    color: var(--color-font-blue);
+    width: 70vw;
+    align-self: end;
+    text-align: start;
+    margin-bottom: 1rem;
+  }
+
+  .loginTitle {
+    width: 60vw;
+    margin-top: -3rem;
+  }
+  .loginTitle > p{
+    font-family: var(--font-logo);
+    color: var(--color-font-yellow);
+    font-size: 3rem;
+  }
+.loginTitle > div {
+    height: 2.5rem;
+}
+  .Login > span:nth-child(1){
+    color: var(--color-font-blue);
+    height: 3rem;
+    justify-self: start;
+    margin: 2rem 0 0 2rem;
+  }

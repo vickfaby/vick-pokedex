@@ -1,9 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 import TituloPokedex from '../components/TituloPokedex';
 import LoginBox from '../components/LoginBox';
 import '../styles/SingUp.scss';
 
+
+
 function SingUp() {
+
+  const navigate = useNavigate();
+  
+  const goto = (url) => {
+    navigate(url);
+  }
+
   return (
     <div className="SingUp">
       <TituloPokedex />
@@ -17,7 +27,6 @@ function SingUp() {
       <div className='orSeparator'>
 
       <div className="orLine"/>
-        {/* <p>or</p> */}
         <span>OR</span>
       <div className="orLine"/>
       </div>
@@ -28,7 +37,7 @@ function SingUp() {
 
       <p>Have an account?</p>
 
-      <button className="tertiaryButton" type="submit">
+      <button onClick={ () => goto('/login') } className="tertiaryButton" type="submit">
         Log in
       </button>
 

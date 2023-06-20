@@ -1,0 +1,20 @@
+.PrivacyPolicyTexts {
+    margin: 0 2rem 0 2rem;
+}
+
+.PrivacyPolicyTexts > .linea-horizontal {
+    width: 24rem;
+}
+
+.PrivacyPolicyTexts > h2{
+    color: var(--color-font-yellow);
+    font-family: var(--font-logo);
+    font-weight: 100;
+    margin-bottom: 0.5rem;
+  }
+  .PrivacyPolicyTexts > p {
+    color: var(--color-font-blue);
+    font-family: var(--font-general);
+    margin: 1rem 0 3rem 0;
+    text-align: left;
+  }
