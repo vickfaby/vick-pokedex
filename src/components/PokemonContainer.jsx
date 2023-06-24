@@ -1,34 +1,24 @@
-import React from 'react';
+import React, { Suspense, lazy, useContext } from 'react';
 import '../styles/PokemonContainer.scss';
-import PokemonItem from './PokemonItem';
+import { MyContext } from './MyProvider';
+import LoadingSqueletonCirlce from './LoadingSqueletonCircle';
+
+//import PokemonItem from './PokemonItem';
+const PokemonItem = lazy(() => import('./PokemonItem'));
 
 function PokemonContainer() {
+  const { pokemons, generationName } = useContext(MyContext);
+  console.log(generationName);
+
   return (
     <div className="PokemonContainer">
-      <h1>Kanto</h1>
+      <h1>{generationName}</h1>
       <div className="pokemons">
-        <PokemonItem/>
-        <PokemonItem/>
-        <PokemonItem/>
-        <PokemonItem/>
-        <PokemonItem/>
-        <PokemonItem/>
-        <PokemonItem/>
-        <PokemonItem/>
-        <PokemonItem/>
-        <PokemonItem/>
-        <PokemonItem/>
-        <PokemonItem/>
-        <PokemonItem/>
-        <PokemonItem/>
-        <PokemonItem/>
-        <PokemonItem/>
-        <PokemonItem/>
-        <PokemonItem/>
-        <PokemonItem/>
-        <PokemonItem/>
-        <PokemonItem/>
-        <PokemonItem/>
+        {pokemons.map((pokemon, i) => (
+          <Suspense fallback={<LoadingSqueletonCirlce />}>
+            <PokemonItem key={pokemon.name} value={pokemon.name} />
+          </Suspense>
+        ))}
       </div>
     </div>
   );

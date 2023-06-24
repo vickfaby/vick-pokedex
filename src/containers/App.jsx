@@ -9,20 +9,24 @@ import PrivacyPolicy from './PrivacyPolicy';
 import LoadingScreen from './LoadingScreen';
 import Home from './Home';
 import PokemonCard from './PokemonCard';
+import {MyProvider} from '../components/MyProvider'
 
 function App() {
   return (
-    <HashRouter>
-      <Routes>
-        <Route path="/" element={<SplashScreen/>} />
-        <Route path='/singup/' element={<SingUp/>}/>
-        <Route path='/login/' element={<Login/>}/>
-        <Route path='/privacypolicy/' element={<PrivacyPolicy/>}/>
-        <Route path='/loadingscreen/' element={<LoadingScreen/>}/>
-        <Route path='/home/' element={<Home/>}/>
-        <Route path='/pokemoncard/' element={<PokemonCard/>}/>
-      </Routes>
-    </HashRouter>
+    <MyProvider>
+
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<SplashScreen />} />
+          <Route path="/singup/" element={<SingUp />} />
+          <Route path="/login/" element={<Login />} />
+          <Route path="/privacypolicy/" element={<PrivacyPolicy />} />
+          <Route path="/loadingscreen/" element={<LoadingScreen />} />
+          <Route path="/home/" element={<Home />} />
+          <Route path="/pokemoncard/" element={<PokemonCard />} />
+        </Routes>
+      </HashRouter>
+    </MyProvider>
   );
 }
 
