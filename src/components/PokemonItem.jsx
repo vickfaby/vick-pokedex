@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, {  useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
 import '../styles/PokemonItem.scss';
@@ -8,13 +8,11 @@ import { MyContext } from './MyProvider';
 
 function PokemonItem({ value }) {
   const [url, setUrl] = useState('');
-  const { setPokemonSelected, setUrlForCard} = useContext(MyContext);
-  const [pokemonId, setPokemonId]  = useState('');
+  const { setPokemonSelected, setUrlForCard } = useContext(MyContext);
+  const [pokemonId, setPokemonId] = useState('');
   const navigate = useNavigate();
 
   const goto = (path, idPokemon, urlCard) => {
-    console.log(`Abrimos info para ${idPokemon}`)
-    console.log(urlCard)
     setUrlForCard(urlCard);
     setPokemonSelected(idPokemon);
     navigate(path);
@@ -32,7 +30,6 @@ function PokemonItem({ value }) {
       .then((response) => {
         const idPokemon = response.data.id;
         const urlImage = response.data.sprites.other.dream_world.front_default;
-        console.log(`${name} id:${idPokemon}`);
         setPokemonId(idPokemon);
         setUrl(urlImage);
         return urlImage;
@@ -46,11 +43,16 @@ function PokemonItem({ value }) {
     document.getElementById(idItemText).style.display = 'block';
   };
   useEffect(() => {
-    requirePokemonInfo(value);
+    if (value) {
+      requirePokemonInfo(value);
+    }
   }, [value]);
 
   return (
-    <div className="PokemonItem" onClick={() => goto('/pokemoncard',pokemonId,url)}>
+    <div
+      className="PokemonItem"
+      onClick={() => goto('/pokemoncard', pokemonId, url)}
+    >
       <div className="PokemonItem-image">
         <div id={idLoadingCircle} className="LoadingSqueletonCirlce" />
         <picture>
@@ -65,7 +67,7 @@ function PokemonItem({ value }) {
       </div>
       <div id={idLoadingBar} className="LoadingSqueletonBar" />
       <p id={idItemText} style={{ display: 'none' }}>
-        {value} 
+        {value}
       </p>
     </div>
   );

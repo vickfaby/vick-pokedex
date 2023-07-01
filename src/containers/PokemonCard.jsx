@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useContext, useEffect} from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import '../styles/PokemonCard.scss';
 import HorizontalLine from '../components/HorizontalLine';
@@ -10,12 +10,14 @@ import PokemonItem from '../components/PokemonItem';
 import { MyContext } from '../components/MyProvider';
 
 function PokemonCard() {
-  const { pokemonSelected, pokemonInfo, requestPokemonInformation, urlForCard } =
-    useContext(MyContext);
+  const {
+    pokemonSelected,
+    pokemonInfo,
+    requestPokemonInformation,
+    urlForCard,
+  } = useContext(MyContext);
   const navigate = useNavigate();
-  const tipos = [];
-  console.log(`Este es el url q llega `)
-  console.log(urlForCard)
+
   const goto = (url) => {
     navigate(url);
   };
@@ -23,18 +25,8 @@ function PokemonCard() {
   useEffect(() => {
     requestPokemonInformation(pokemonSelected);
   }, []);
-  
-  const typesDeep = JSON.parse(JSON.stringify({ ...[pokemonInfo.types][0] }));
-  console.log(`typesDeep tiene ${Object.keys(typesDeep).length} posiciones `);
-  console.log(typesDeep); //trae el objeto con las posiciones de tipos de pokemon
 
-  //console.log({...types_deep[0]}.slot) //slot esta una posicion arriba de los types, en en for se entra a ahcer las copias de los objetos con el operador de propagacion (...)
-
-  for (let i = 0; i <= Object.keys(typesDeep).length - 1; i += 1) {
-    const pokemonType = { ...{ ...{ ...typesDeep[i] } }.type }.name;
-    tipos.push(pokemonType);
-    console.log(tipos);
-  }
+  const tipos = pokemonInfo.types?.map(({ type }) => type.name) || [];
 
   return (
     <div className="PokemonCard">
@@ -55,9 +47,7 @@ function PokemonCard() {
           <p>#{pokemonInfo.id}</p>
           <div className="pokemonData-1">
             <p>TIPO:</p>
-            <p>{
-              tipos.join(", ").toUpperCase()
-             }</p>
+            <p>{tipos.join(', ').toUpperCase()}</p>
           </div>
           <div className="pokemonData-2">
             <p>PESO:</p>
@@ -70,19 +60,19 @@ function PokemonCard() {
           </picture>
         </div>
 
-        <p>POKÉMON TORTUGUITA</p>
-        <p>
-          El caparazon de squietle no le siurve de proteccion unicamente, su
-          forma redondeada y las hendiduras q tiene le ayudan a dewslizarse en
-          el agua y le permiten nadar a gran velocidad
-        </p>
+        <p>{pokemonInfo.title}</p>
+        <p>{pokemonInfo.description}</p>
         <div className="pokemoncard__evolucion">
           <p>EVOLUCIÓN</p>
           <HorizontalLine />
           <div className="pokemoncard__evolucion--itemcontainer">
-            <PokemonItem />
-            <PokemonItem />
-            <PokemonItem />
+            {
+            pokemonInfo.evoChainObj
+              ? Object.values(pokemonInfo.evoChainObj).map((element) => (
+                   <PokemonItem key={element.name} value={element.name} />
+              ))
+              : <PokemonItem  />
+              }
           </div>
         </div>
       </div>

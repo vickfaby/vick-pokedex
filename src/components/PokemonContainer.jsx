@@ -7,16 +7,16 @@ import LoadingSqueletonCirlce from './LoadingSqueletonCircle';
 const PokemonItem = lazy(() => import('./PokemonItem'));
 
 function PokemonContainer() {
-  const { pokemons, generationName } = useContext(MyContext);
-  console.log(generationName);
+  const { pokemons, generationName,  } = useContext(MyContext);
+  //console.log(pokemons);
 
   return (
     <div className="PokemonContainer">
       <h1>{generationName}</h1>
       <div className="pokemons">
         {pokemons.map((pokemon, i) => (
-          <Suspense fallback={<LoadingSqueletonCirlce />}>
-            <PokemonItem key={pokemon.name} value={pokemon.name} />
+          <Suspense key={pokemon.name} fallback={<LoadingSqueletonCirlce />}>
+            <PokemonItem  value={pokemon.name} />
           </Suspense>
         ))}
       </div>
