@@ -6,10 +6,9 @@ import { useNavigate } from 'react-router';
 import '../styles/PokemonItem.scss';
 import { MyContext } from './MyProvider';
 
-function PokemonItem({ value }) {
+function PokemonItem({ pokemonName, pokemonId }) {
   const [url, setUrl] = useState('');
-  const { setPokemonSelected, setUrlForCard } = useContext(MyContext);
-  const [pokemonId, setPokemonId] = useState('');
+  const { setPokemonSelected, setUrlForCard, requestPokemonInformation } = useContext(MyContext);
   const navigate = useNavigate();
 
   const goto = (path, idPokemon, urlCard) => {
@@ -17,22 +16,27 @@ function PokemonItem({ value }) {
     setPokemonSelected(idPokemon);
     navigate(path);
   };
-  const idItemImage = `pokemonItemImage${value}`;
-  const idItemText = `pokemonItemText${value}`;
-  const idLoadingCircle = `loadingItemImage${value}`;
-  const idLoadingBar = `loadingItemText${value}`;
+  const idItemImage = `pokemonItemImage${pokemonName}`;
+  const idItemText = `pokemonItemText${pokemonName}`;
+  const idLoadingCircle = `loadingItemImage${pokemonName}`;
+  const idLoadingBar = `loadingItemText${pokemonName}`;
 
   const baseURL = 'https://pokeapi.co/api/v2';
 
-  const requirePokemonInfo = (name) =>
+  const requirePokemonInfo = (id) =>
     axios
-      .get(`${baseURL}/pokemon/${name}`)
+      .get(`${baseURL}/pokemon/${id}`)
       .then((response) => {
-        const idPokemon = response.data.id;
-        const urlImage = response.data.sprites.other.dream_world.front_default;
-        setPokemonId(idPokemon);
-        setUrl(urlImage);
-        return urlImage;
+        const urlImage1 = response.data.sprites.other.home.front_default;
+        const urlImage2 = response.data.sprites.other.dream_world.front_default;
+        const urlImage3 = response.data.sprites.front_default;
+        if (urlImage1 !== null) {
+          setUrl(urlImage1);
+        } else if (urlImage2 !== null) {
+          setUrl(urlImage2);
+        } else {
+          setUrl(urlImage3);
+        }
       })
       .catch((error) => console.log(error));
 
@@ -43,10 +47,10 @@ function PokemonItem({ value }) {
     document.getElementById(idItemText).style.display = 'block';
   };
   useEffect(() => {
-    if (value) {
-      requirePokemonInfo(value);
+    if (pokemonId) {
+      requirePokemonInfo(pokemonId);
     }
-  }, [value]);
+  }, [pokemonId]);
 
   return (
     <div
@@ -67,7 +71,7 @@ function PokemonItem({ value }) {
       </div>
       <div id={idLoadingBar} className="LoadingSqueletonBar" />
       <p id={idItemText} style={{ display: 'none' }}>
-        {value}
+        {pokemonName}
       </p>
     </div>
   );

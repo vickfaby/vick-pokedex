@@ -3,7 +3,7 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 
 const MyContext = React.createContext();
 
@@ -14,7 +14,8 @@ function MyProvider({ children }) {
   const [generation, setGeneration] = useState(1);
   const [generationName, setGenerationName] = useState('KANTO');
   const [pokemons, setPokemons] = useState([]);
-  const [pokemonSelected, setPokemonSelected] = useState(1);
+  const [pokemonsSearched, setPokemonsSearched] = useState([])
+  const [pokemonSelected, setPokemonSelected] = useState(0);
   const [pokemonInfo, setPokemonInfo] = useState({});
   const [urlForCard, setUrlForCard] = useState(
     'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg'
@@ -87,19 +88,14 @@ function MyProvider({ children }) {
     };
     await axios.get(url).then((response) => {
       if (response.data.chain.species.name) {
-        evoChain[0] = {name: response.data.chain.species.name}
+        evoChain[0] = {name: response.data.chain.species.name, id: response.data.chain.species.url.slice(42, -1)}
         if (response.data.chain.evolves_to[0]?.species.name) {
-          evoChain[1] = {name: response.data.chain.evolves_to[0]?.species.name}
+          evoChain[1] = {name: response.data.chain.evolves_to[0]?.species.name,
+            id: response.data.chain.evolves_to[0]?.species.url.slice(42, -1)}
           if (response.data.chain.evolves_to[0].evolves_to[0]?.species.name) {
-              evoChain[2] = {name: response.data.chain.evolves_to[0].evolves_to[0]?.species.name}
-          } else {
-            console.log(`No hay 3ra fase`);
-          }
-        } else {
-          console.log(`No hay 2da fase`);
+              evoChain[2] = {name: response.data.chain.evolves_to[0].evolves_to[0]?.species.name, id: response.data.chain.evolves_to[0].evolves_to[0]?.species.url.slice(42, -1)}
+          } 
         }
-      } else {
-        console.log(`No hay 1ra fase`);
       }
     });
 
@@ -115,19 +111,30 @@ function MyProvider({ children }) {
     await axios
       .get(`${baseURL}/pokemon-species/${pokemonId}`)
       .then( async (response) => {
-        const titleDescription = response.data.genera.filter(
+
+        let titleDescription = response.data.genera.filter(
           (entri) => entri.language.name === 'es'
         );
-        const descrips = response.data.flavor_text_entries.filter(
+        if(titleDescription.length === 0){
+          titleDescription = response.data.genera.filter(
+            (entri) => entri.language.name === 'en'
+          );
+        }
+        let descrips = response.data.flavor_text_entries.filter(
           (entri) => entri.language.name === 'es'
         );
+        if(descrips.length === 0){
+          descrips = response.data.flavor_text_entries.filter(
+            (entri) => entri.language.name === 'en'
+          );
+        }
         const descriptionText = `${descrips[0].flavor_text} ${descrips[1].flavor_text}`;
         const evolutionChain = response.data.evolution_chain.url;
         const evoChainObj = await requestEvolutionchain(evolutionChain);
         descriptionInfo.title = titleDescription[0].genus;
         descriptionInfo.evoChainObj = evoChainObj;
         descriptionInfo.description = descriptionText;
-      });
+      }).catch(error => console.log(error))
     return descriptionInfo;
   };
 
@@ -135,20 +142,23 @@ function MyProvider({ children }) {
     const { title, description, evoChainObj } = await requestDescription(pokemonId);
 
     axios.get(`${baseURL}/pokemon/${pokemonId}`).then((response) => {
-      const { name, weight, types } = response.data;
+      const { name, weight, types, sprites } = response.data;
+      const tipos = types?.map(({ type }) => type.name);
       const pokemonData = {
         id: pokemonId,
+        urlImage: sprites.other.dream_world.front_default,
         name,
         weight,
-        types,
+        types: tipos,
         title,
         description,
         evoChainObj
       };
+      setPokemonInfo(pokemonData);
       console.log(`Esta es la info traida para ${name}`);
       console.log(pokemonData);
-      setPokemonInfo(pokemonData);
-    });
+      return pokemonData;
+    }).catch(error => console.log(error));
   };
 
   const requestPokemon = (generationValue) => {
@@ -167,8 +177,9 @@ function MyProvider({ children }) {
       console.log(`La liga actual es ${generation}`);
       console.log(objPokemons);
       setGeneration(generationValue);
+      setPokemonsSearched(objPokemons);
       postGenerationName(generationValue);
-    });
+    }).catch(error => console.log(error));
   };
 
   const pokemonData = {
@@ -176,12 +187,14 @@ function MyProvider({ children }) {
     generation,
     generationName,
     pokemons,
+    pokemonsSearched,
     pokemonSelected,
     pokemonInfo,
     urlForCard,
     orderedPokemon,
     setRegion,
     setPokemons,
+    setPokemonsSearched,
     setGeneration,
     requestPokemon,
     requestRegions,

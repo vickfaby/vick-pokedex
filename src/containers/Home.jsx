@@ -6,7 +6,16 @@ import PokemonContainer from '../components/PokemonContainer';
 import { MyContext } from '../components/MyProvider';
 
 function Home() {
-  const { regions, generation, requestPokemon, requestRegions } = useContext(MyContext);
+  const { regions, generation, requestPokemon, requestRegions, pokemons, setPokemonsSearched } = useContext(MyContext);
+
+  const filterPokemon = () => {
+    const text = document.getElementById('inputSearchPokemon')
+    const newPokemons = pokemons.filter((pokemon) => pokemon.name.includes(text.value));
+    setPokemonsSearched(newPokemons);
+    console.log(`Estos son los pokemon filtrados`)
+    console.log( newPokemons)
+  }
+
 
   useEffect(() => {
     requestRegions();
@@ -17,7 +26,7 @@ function Home() {
     <div className="Home">
       <div className="home-header">
         <p>Pokedéx</p>
-        <input placeholder="Search" />
+        <input id='inputSearchPokemon' placeholder="Search" onChange={() => filterPokemon()} />
       </div>
       <HorizontalLine />
       <div className="home-leagues-container">

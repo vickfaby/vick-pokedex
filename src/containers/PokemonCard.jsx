@@ -2,8 +2,9 @@
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
+import axios from 'axios';
 import '../styles/PokemonCard.scss';
 import HorizontalLine from '../components/HorizontalLine';
 import PokemonItem from '../components/PokemonItem';
@@ -16,17 +17,51 @@ function PokemonCard() {
     requestPokemonInformation,
     urlForCard,
   } = useContext(MyContext);
+
+  const [traducedTypes, setTraducedTypes] = useState('');
+
+  const baseURL = 'https://pokeapi.co/api/v2';
   const navigate = useNavigate();
 
   const goto = (url) => {
     navigate(url);
   };
 
-  useEffect(() => {
-    requestPokemonInformation(pokemonSelected);
-  }, []);
+  const traduceTypes = (types) => {
+    const typesTraduced = [];
 
-  const tipos = pokemonInfo.types?.map(({ type }) => type.name) || [];
+    types.forEach(async (type) => {
+      await axios
+        .get(`${baseURL}/type/${type}`)
+        .then((res) => {
+          const tipo = res.data.names.filter(
+            (entri) => entri.language.name === 'es'
+          )
+          typesTraduced.push(tipo[0].name);
+          const typesToSend = typesTraduced.join(', ');
+          setTraducedTypes(typesToSend);
+          console.log(`Se tradujo el tipo ${typesToSend}`);
+        })
+        .catch((errror) => console.log(errror));
+    });
+  };
+
+  useEffect(() => {
+    if(pokemonSelected === 0){
+      goto('/home')
+    }
+    console.log(`Se lee el id ${pokemonSelected} en card`);
+    requestPokemonInformation(pokemonSelected);
+  }, [pokemonSelected]);
+
+  useEffect(() => {
+    if(pokemonSelected === 0){
+      goto('/home')
+    }
+    const tipos = pokemonInfo?.types || ['', ''];
+    traduceTypes(tipos);
+  }, [pokemonInfo]);
+
 
   return (
     <div className="PokemonCard">
@@ -47,7 +82,7 @@ function PokemonCard() {
           <p>#{pokemonInfo.id}</p>
           <div className="pokemonData-1">
             <p>TIPO:</p>
-            <p>{tipos.join(', ').toUpperCase()}</p>
+            <p>{traducedTypes.toUpperCase()}</p>
           </div>
           <div className="pokemonData-2">
             <p>PESO:</p>
@@ -61,18 +96,22 @@ function PokemonCard() {
         </div>
 
         <p>{pokemonInfo.title}</p>
-        <p>{pokemonInfo.description}</p>
+        <p>{pokemonInfo?.description}</p>
         <div className="pokemoncard__evolucion">
           <p>EVOLUCIÓN</p>
           <HorizontalLine />
           <div className="pokemoncard__evolucion--itemcontainer">
-            {
-            pokemonInfo.evoChainObj
-              ? Object.values(pokemonInfo.evoChainObj).map((element) => (
-                   <PokemonItem key={element.name} value={element.name} />
+            {pokemonInfo.evoChainObj ? (
+              Object.values(pokemonInfo.evoChainObj).map((element) => (
+                <PokemonItem
+                  key={element.name}
+                  pokemonName={element.name}
+                  pokemonId={element.id}
+                />
               ))
-              : <PokemonItem  />
-              }
+            ) : (
+              <PokemonItem />
+            )}
           </div>
         </div>
       </div>

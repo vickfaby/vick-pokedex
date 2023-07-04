@@ -3,20 +3,17 @@ import '../styles/PokemonContainer.scss';
 import { MyContext } from './MyProvider';
 import LoadingSqueletonCirlce from './LoadingSqueletonCircle';
 
-//import PokemonItem from './PokemonItem';
 const PokemonItem = lazy(() => import('./PokemonItem'));
 
 function PokemonContainer() {
-  const { pokemons, generationName,  } = useContext(MyContext);
-  //console.log(pokemons);
-
+  const { pokemonsSearched, generationName,  } = useContext(MyContext);
   return (
     <div className="PokemonContainer">
       <h1>{generationName}</h1>
       <div className="pokemons">
-        {pokemons.map((pokemon, i) => (
+        {pokemonsSearched?.map((pokemon, i) => (
           <Suspense key={pokemon.name} fallback={<LoadingSqueletonCirlce />}>
-            <PokemonItem  value={pokemon.name} />
+            <PokemonItem  pokemonName={pokemon.name} pokemonId={pokemon.id} />
           </Suspense>
         ))}
       </div>
