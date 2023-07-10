@@ -1,21 +1,27 @@
 @import 'vars';
 
 .PokemonItem {
-  //border: 1px solid var(--color-cards-lines);
-  width: 6rem;
-  height: 10rem;
+  border: 1px solid var(--color-cards-lines);
+  border-radius: 0.1rem;
+  width: 11rem;
+  height: 15rem;
+  display: grid;
 }
 .PokemonItem-image {
   border-bottom: 1px solid var(--color-cards-lines);
 }
 .PokemonItem-image img:first-child {
-  width: 6rem;
-  height: 8rem;
+  //width: 6rem;
+  height: 10rem;
   object-fit: contain;
+  margin: 0 auto;
+  animation: pokemon-breathing 0.8s linear infinite alternate;
 }
 
 .PokemonItem > p {
   color: var(--color-font-blue);
+  font-size: 1.4rem;
+  margin: 0.5rem;
 }
 
 .LoadingSqueletonCirlce {
@@ -26,14 +32,14 @@
   background: var(--color-background-circle);
   border: 1px solid var(--color-cards-lines);
 
- animation: skeleton-loading 0.8s linear infinite alternate;
+ animation: skeleton-loading 1s linear infinite alternate;
 }
 
 .LoadingSqueletonBar {
-  width: 6rem;
-  height: 3vw;
+  width: 8rem;
+  height: 1rem;
   border-radius: 0rem;
-  margin: 0.5rem auto;
+  margin: auto auto;
   background: var(--color-background-circle);
   border: 1px solid var(--color-cards-lines);
 
@@ -46,5 +52,14 @@
   }
   100% {
     background-color: var(--color-background);
+  }
+}
+
+@keyframes pokemon-breathing {
+  0% {
+    scale: 1;
+  }
+  100% {
+    scale: 1.04;
   }
 }

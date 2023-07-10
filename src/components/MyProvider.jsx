@@ -78,6 +78,8 @@ function MyProvider({ children }) {
         const data = response.data.main_region.name;
         generationNames.push(data);
         setRegion(generationNames);
+        console.log('Se trajeron estas regiones:')
+        console.log(generationNames)
       });
     }
   };

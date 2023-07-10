@@ -13,4 +13,22 @@
     margin: 0.3rem 0.5rem 0 1rem;
   }
   
+.linea-horizontal-title{
+  border-bottom: 1px solid var(--color-cards-lines);
+  width: -webkit-fill-available;
+  z-index: 1;
+  position: relative;
+  margin: 0 1rem;
+  
+  animation: rotate 1s linear infinite alternate;
+  }
 
+  @keyframes rotate {
+    0% {
+      transform: rotateY(0deg);
+    }
+    100% {
+     
+      transform: rotateY(180deg);
+    }
+  }

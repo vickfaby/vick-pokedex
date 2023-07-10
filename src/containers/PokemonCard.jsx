@@ -6,6 +6,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import axios from 'axios';
 import '../styles/PokemonCard.scss';
+import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import HorizontalLine from '../components/HorizontalLine';
 import PokemonItem from '../components/PokemonItem';
 import { MyContext } from '../components/MyProvider';
@@ -36,7 +37,7 @@ function PokemonCard() {
         .then((res) => {
           const tipo = res.data.names.filter(
             (entri) => entri.language.name === 'es'
-          )
+          );
           typesTraduced.push(tipo[0].name);
           const typesToSend = typesTraduced.join(', ');
           setTraducedTypes(typesToSend);
@@ -47,21 +48,38 @@ function PokemonCard() {
   };
 
   useEffect(() => {
-    if(pokemonSelected === 0){
-      goto('/home')
+    if (pokemonSelected === 0) {
+      goto('/home');
     }
     console.log(`Se lee el id ${pokemonSelected} en card`);
     requestPokemonInformation(pokemonSelected);
+    window.scrollTo(0, 0);
   }, [pokemonSelected]);
 
+  const idTitleCard = `idTitleCard${pokemonSelected}`;
+  const idImageCard = `idImageCard${pokemonSelected}`;
+  const idDataContainer = `idDataContainer${pokemonSelected}`;
+  const idInfoTitle = `idInfoTitle${pokemonSelected}`;
+  const idInfoDescription = `idInfoDescription${pokemonSelected}`;
+  const idLoadingCircle = `idLoadingCircle${pokemonSelected}`;
+
+  const show = () => {
+    document.getElementById(idTitleCard).style.display = 'block';
+    document.getElementById(idImageCard).style.display = 'unset';
+    document.getElementById(idDataContainer).style.display = 'block';
+    document.getElementById(idInfoTitle).style.display = 'block';
+    document.getElementById(idInfoDescription).style.display = 'block';
+
+    document.getElementById(idLoadingCircle).style.display = 'none';
+    console.log(`Se muestra imagen con id ${idImageCard}`);
+  };
   useEffect(() => {
-    if(pokemonSelected === 0){
-      goto('/home')
+    if (pokemonSelected === 0) {
+      goto('/home');
     }
     const tipos = pokemonInfo?.types || ['', ''];
     traduceTypes(tipos);
   }, [pokemonInfo]);
-
 
   return (
     <div className="PokemonCard">
@@ -73,30 +91,86 @@ function PokemonCard() {
         >
           arrow_back_ios
         </span>
-        <h1>{pokemonInfo.name}</h1>
+        <SwitchTransition>
+          <CSSTransition
+            key={pokemonInfo.name}
+            addEndListener={(node, done) =>
+              node.addEventListener('transitionend', done, false)
+            }
+            classNames="fade"
+          >
+            <h1 id={idTitleCard}  >{pokemonInfo.name}</h1>
+          </CSSTransition>
+        </SwitchTransition>
       </div>
 
       <HorizontalLine />
-      <div className="pokemonInfo">
-        <div className="pokemonDataContainer">
-          <p>#{pokemonInfo.id}</p>
-          <div className="pokemonData-1">
-            <p>TIPO:</p>
-            <p>{traducedTypes.toUpperCase()}</p>
-          </div>
-          <div className="pokemonData-2">
-            <p>PESO:</p>
-            <p>{pokemonInfo.weight}Kg</p>
-          </div>
-        </div>
+      <div className="pokemonInfo" onLoad={show}>
+        <SwitchTransition>
+          <CSSTransition
+            key={pokemonInfo.id}
+            addEndListener={(node, done) =>
+              node.addEventListener('transitionend', done, false)
+            }
+            classNames="fade"
+          >
+            <div id={idDataContainer} className="pokemonDataContainer">
+              <p>#{pokemonInfo.id}</p>
+              <div className="pokemonData-1">
+                <p>TIPO:</p>
+                <p>{traducedTypes.toUpperCase()}</p>
+              </div>
+              <div className="pokemonData-2">
+                <p>PESO:</p>
+                <p>{pokemonInfo.weight}Kg</p>
+              </div>
+            </div>
+          </CSSTransition>
+        </SwitchTransition>
         <div className="imgContainer">
+          <div id={idLoadingCircle} className="LoadingSqueletonCirlce" />
           <picture>
-            <img src={urlForCard} alt="poke" />
+            <SwitchTransition>
+              <CSSTransition
+                key={urlForCard}
+                addEndListener={(node, done) =>
+                  node.addEventListener('transitionend', done, false)
+                }
+                classNames="fade"
+              >
+                <img
+                  id={idImageCard}
+                  src={urlForCard}
+                  alt="poke"
+                  style={{ display: 'none' }}
+                  //onLoad={show}
+                />
+              </CSSTransition>
+            </SwitchTransition>
           </picture>
         </div>
-
-        <p>{pokemonInfo.title}</p>
-        <p>{pokemonInfo?.description}</p>
+        <SwitchTransition>
+          <CSSTransition
+            key={pokemonInfo.description}
+            addEndListener={(node, done) =>
+              node.addEventListener('transitionend', done, false)
+            }
+            classNames="fade"
+          >
+            <p id={idInfoTitle}>{pokemonInfo.title}</p>
+          </CSSTransition>
+        </SwitchTransition>
+        <SwitchTransition>
+          <CSSTransition
+            key={pokemonInfo.description}
+            addEndListener={(node, done) =>
+              node.addEventListener('transitionend', done, false)
+            }
+            classNames="fade"
+          >
+            <p id={idInfoDescription}>{pokemonInfo?.description}</p>
+          </CSSTransition>
+        </SwitchTransition>
         <div className="pokemoncard__evolucion">
           <p>EVOLUCIÓN</p>
           <HorizontalLine />

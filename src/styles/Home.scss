@@ -3,13 +3,20 @@
 .Home {
   width: 100vw;
   height: 100%;
+  min-width: 375px;
   background: var(--color-background);
+  border-bottom: 1px solid var(--color-cards-lines);
   padding-top: 0.5rem;
+  max-width: 64rem;
+  margin: 0 auto;
+  border-left: 1px solid var(--color-cards-lines);
+  border-right: 1px solid var(--color-cards-lines);
+  padding-bottom: 1rem;
 }
 
 .home-header {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
   margin-bottom: 0.5rem;
 }
@@ -18,6 +25,7 @@
   font-family: var(--font-logo);
   font-size: 3rem;
   color: var(--color-font-yellow);
+  margin-left: 1rem;
 }
 .home-header > input {
   border: 1px solid var(--color-cards-lines);
@@ -26,6 +34,7 @@
   height: 2.3rem;
   color: var(--color-font-blue);
   padding: 0 0 0 0.5rem;
+  margin-left: 2rem;
 }
 
 .home-header > input::placeholder {
@@ -36,4 +45,12 @@
   display: flex;
   justify-content: space-around;
   margin: 1rem 0 1rem 0;
+  overflow-x: scroll;
+  justify-content: flex-start;
+  //overflow-x: hidden;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.home-leagues-container::-webkit-scrollbar { 
+  display: none; /* Safari and Chrome */
 }

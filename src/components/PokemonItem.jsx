@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useContext, useEffect, useState } from 'react';
@@ -8,7 +9,8 @@ import { MyContext } from './MyProvider';
 
 function PokemonItem({ pokemonName, pokemonId }) {
   const [url, setUrl] = useState('');
-  const { setPokemonSelected, setUrlForCard, requestPokemonInformation } = useContext(MyContext);
+  const { setPokemonSelected, setUrlForCard } =
+    useContext(MyContext);
   const navigate = useNavigate();
 
   const goto = (path, idPokemon, urlCard) => {
@@ -60,13 +62,15 @@ function PokemonItem({ pokemonName, pokemonId }) {
       <div className="PokemonItem-image">
         <div id={idLoadingCircle} className="LoadingSqueletonCirlce" />
         <picture>
-          <img
-            id={idItemImage}
-            style={{ display: 'none' }}
-            src={url}
-            alt="pokemon"
-            onLoad={show}
-          />
+
+              <img
+                id={idItemImage}
+                style={{ display: 'none' }}
+                src={url}
+                alt="pokemon"
+                onLoad={show}
+              />
+
         </picture>
       </div>
       <div id={idLoadingBar} className="LoadingSqueletonBar" />

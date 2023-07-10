@@ -1,4 +1,7 @@
 .linea-horizontal{
-    border-bottom: 1px solid  var(--color-cards-lines);
-    width: -webkit-fill-available;
+  border-bottom: 1px solid var(--color-cards-lines);
+  width: -webkit-fill-available;
+  z-index: 1;
+  position: relative;
+  margin: 0 1rem;
   }

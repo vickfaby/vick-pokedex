@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable import/no-extraneous-dependencies */
+import React, { useRef } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import SplashScreen from './SplashScreen';
@@ -9,12 +10,12 @@ import PrivacyPolicy from './PrivacyPolicy';
 import LoadingScreen from './LoadingScreen';
 import Home from './Home';
 import PokemonCard from './PokemonCard';
-import {MyProvider} from '../components/MyProvider'
+import { MyProvider } from '../components/MyProvider';
+import '../styles/pruebaTransition.scss';
 
 function App() {
   return (
     <MyProvider>
-
       <HashRouter>
         <Routes>
           <Route path="/" element={<SplashScreen />} />

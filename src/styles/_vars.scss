@@ -8,9 +8,12 @@
   
   html {
     font-size: 62.5%;
+    height: auto;
+    background: var(--color-background);
   }
   #app{
     min-width: 375px;
+
   }
   
 :root {

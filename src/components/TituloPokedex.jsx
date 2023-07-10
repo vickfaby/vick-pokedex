@@ -5,7 +5,7 @@ function TituloPokedex() {
   return (
     <div className="title">
     <p>Pokédex</p>
-    <div className="linea-horizontal" />
+    <div className="linea-horizontal-title" />
   </div>
   )
 }
