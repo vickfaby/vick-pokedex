@@ -11,7 +11,7 @@ function PokemonContainer() {
     <div className="PokemonContainer">
       <h1>{generationName}</h1>
       <div className="pokemons">
-        {pokemonsSearched?.map((pokemon, i) => (
+        {pokemonsSearched?.map((pokemon) => (
           <Suspense key={pokemon.name} fallback={<LoadingSqueletonCirlce />}>
             <PokemonItem  pokemonName={pokemon.name} pokemonId={pokemon.id} />
           </Suspense>

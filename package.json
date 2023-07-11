@@ -4,11 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve",
-    "build": "webpack --mode production",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
     "format": "prettier --write {*.js,src/**/*.{js,jsx}}",
-    "lint": "eslint src/ --fix"
+    "lint": "eslint src/ --fix",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -19,13 +22,14 @@
   "bugs": {
     "url": "https://github.com/vickfaby/vick-pokedex/issues"
   },
-  "homepage": "https://github.com/vickfaby/vick-pokedex#readme",
+  "homepage": "https://vickfaby.github.io/vickfaby/vick-pokedex",
   "dependencies": {
     "axios": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.11.1",
     "react-router-dom": "^6.11.1",
+    "react-scripts": "^5.0.1",
     "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
@@ -43,6 +47,7 @@
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
+    "gh-pages": "^5.0.0",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.1",
     "mini-css-extract-plugin": "^2.7.5",
@@ -60,5 +65,17 @@
       "pre-push": "npm test",
       "...": "..."
     }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

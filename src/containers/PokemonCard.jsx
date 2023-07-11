@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 /* eslint-disable spaced-comment */
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -5,8 +6,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import axios from 'axios';
-import '../styles/PokemonCard.scss';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
+import '../styles/PokemonCard.scss';
 import HorizontalLine from '../components/HorizontalLine';
 import PokemonItem from '../components/PokemonItem';
 import { MyContext } from '../components/MyProvider';

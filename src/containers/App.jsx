@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React, { useRef } from 'react';
+import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import SplashScreen from './SplashScreen';
