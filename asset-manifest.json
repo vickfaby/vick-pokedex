@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/vickfaby/vick-pokedex/static/css/main.f23aec4b.css",
-    "main.js": "/vickfaby/vick-pokedex/static/js/main.1347e7ea.js",
-    "static/media/CenturyGothic.ttf": "/vickfaby/vick-pokedex/static/media/CenturyGothic.b1b792bab1bff8f27ba7.ttf",
-    "index.html": "/vickfaby/vick-pokedex/index.html",
-    "main.f23aec4b.css.map": "/vickfaby/vick-pokedex/static/css/main.f23aec4b.css.map",
-    "main.1347e7ea.js.map": "/vickfaby/vick-pokedex/static/js/main.1347e7ea.js.map"
+    "main.css": "/vick-pokedex/static/css/main.0bcdbcca.css",
+    "main.js": "/vick-pokedex/static/js/main.1347e7ea.js",
+    "static/media/CenturyGothic.ttf": "/vick-pokedex/static/media/CenturyGothic.b1b792bab1bff8f27ba7.ttf",
+    "index.html": "/vick-pokedex/index.html",
+    "main.0bcdbcca.css.map": "/vick-pokedex/static/css/main.0bcdbcca.css.map",
+    "main.1347e7ea.js.map": "/vick-pokedex/static/js/main.1347e7ea.js.map"
   },
   "entrypoints": [
-    "static/css/main.f23aec4b.css",
+    "static/css/main.0bcdbcca.css",
     "static/js/main.1347e7ea.js"
   ]
 }
