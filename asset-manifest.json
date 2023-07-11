@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/vickfaby/vick-pokedex/static/css/main.1d012a57.css",
+    "main.js": "/vickfaby/vick-pokedex/static/js/main.549e5e3b.js",
+    "static/media/CenturyGothic.ttf": "/vickfaby/vick-pokedex/static/media/CenturyGothic.b1b792bab1bff8f27ba7.ttf",
+    "index.html": "/vickfaby/vick-pokedex/index.html",
+    "main.1d012a57.css.map": "/vickfaby/vick-pokedex/static/css/main.1d012a57.css.map",
+    "main.549e5e3b.js.map": "/vickfaby/vick-pokedex/static/js/main.549e5e3b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1d012a57.css",
+    "static/js/main.549e5e3b.js"
+  ]
+}
