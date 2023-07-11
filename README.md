@@ -21,3 +21,5 @@ La meta de este proyecto es ser una pieza importante en mi portafolio profesiona
   
 - `React.js`: version 18.2.0
 - `React-dom`: version 18.2.0
+- `Axios`: version 1.4.0
+- `react-transition-group`: 4.4.5
