@@ -3,8 +3,6 @@ import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import SplashScreen from './SplashScreen';
-// eslint-disable-next-line import/no-unresolved
-import SingUp from './Singup';
 import Login from './Login';
 import PrivacyPolicy from './PrivacyPolicy';
 import LoadingScreen from './LoadingScreen';
@@ -12,6 +10,7 @@ import Home from './Home';
 import PokemonCard from './PokemonCard';
 import { MyProvider } from '../components/MyProvider';
 import '../styles/pruebaTransition.scss';
+import SingingUp from './SingingUp';
 
 function App() {
   return (
@@ -19,8 +18,8 @@ function App() {
       <HashRouter>
         <Routes>
           <Route path="/" element={<SplashScreen />} />
-          <Route path="/singup/" element={<SingUp />} />
           <Route path="/login/" element={<Login />} />
+          <Route path="/singup/" element={<SingingUp/>} />
           <Route path="/privacypolicy/" element={<PrivacyPolicy />} />
           <Route path="/loadingscreen/" element={<LoadingScreen />} />
           <Route path="/home/" element={<Home />} />

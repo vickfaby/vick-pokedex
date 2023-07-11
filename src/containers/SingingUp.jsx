@@ -6,7 +6,7 @@ import '../styles/SingUp.scss';
 
 
 
-function SingUp() {
+function SingingUp() {
 
   const navigate = useNavigate();
   
@@ -51,4 +51,4 @@ function SingUp() {
   );
 }
 
-export default SingUp;
+export default SingingUp;

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -40,7 +41,7 @@ function PokemonItem({ pokemonName, pokemonId }) {
           setUrl(urlImage3);
         }
       })
-      .catch((error) => console.log(error));
+      // .catch((error) => console.log(error));
 
   const show = () => {
     document.getElementById(idLoadingCircle).style.display = 'none';

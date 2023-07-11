@@ -12,8 +12,8 @@ function Home() {
     const text = document.getElementById('inputSearchPokemon')
     const newPokemons = pokemons.filter((pokemon) => pokemon.name.includes(text.value));
     setPokemonsSearched(newPokemons);
-    console.log(`Estos son los pokemon filtrados`)
-    console.log( newPokemons)
+    // console.log(`Estos son los pokemon filtrados`)
+   // console.log( newPokemons)
   }
 
 
