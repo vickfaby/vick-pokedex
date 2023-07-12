@@ -12,7 +12,7 @@ function SplashScreen() {
   };
 
   useEffect(() => {
-    setTimeout(passSplash, 2000);
+     setTimeout(passSplash, 3000);
   },[]);
 
   return (

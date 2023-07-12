@@ -1,4 +1,7 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router';
 import '../styles/Home.scss';
 import HorizontalLine from '../components/HorizontalLine';
 import LeagueItem from '../components/LeagueItem';
@@ -12,11 +15,13 @@ function Home() {
     const text = document.getElementById('inputSearchPokemon')
     const newPokemons = pokemons.filter((pokemon) => pokemon.name.includes(text.value));
     setPokemonsSearched(newPokemons);
-    // console.log(`Estos son los pokemon filtrados`)
-   // console.log( newPokemons)
   }
 
+  const navigate = useNavigate();
 
+  const goto = (path) => {
+    navigate(path)
+  }
   useEffect(() => {
     requestRegions();
     requestPokemon(generation);
@@ -25,7 +30,7 @@ function Home() {
   return (
     <div className="Home">
       <div className="home-header">
-        <p>Pokedéx</p>
+        <p id='titleHome' onClick={() => goto('/')} >Pokedéx</p>
         <input id='inputSearchPokemon' placeholder="Search" onChange={() => filterPokemon()} />
       </div>
       <HorizontalLine />

@@ -1,26 +1,30 @@
 @import 'vars';
 
-.Login {
+.Login{
+
+}
+.LoginContent {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(10, 1fr);
     height: 100vh;
-    width: 100vw;
+    max-width: 50rem;
     background: var(--color-background);
     justify-items: center;
+    margin: 0 auto;
+    padding-top: 4rem;
   }
 
-  .Login > p:nth-child(8){
+  .LoginContent > p{
     font-size: 1.2rem;
     color: var(--color-font-blue);
-    width: 70vw;
     align-self: end;
     text-align: start;
     margin-bottom: 1rem;
   }
 
   .loginTitle {
-    width: 60vw;
+    width: 100%;
     margin-top: -3rem;
   }
   .loginTitle > p{
@@ -31,7 +35,7 @@
 .loginTitle > div {
     height: 2.5rem;
 }
-  .Login > span:nth-child(1){
+  .LoginContent > span:nth-child(1){
     color: var(--color-font-blue);
     height: 3rem;
     justify-self: start;

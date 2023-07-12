@@ -4,7 +4,7 @@
     color: var(--color-font-blue);
     font-size: 2rem;
     margin: 0;
-    width: min-content;
+    width: 100%;
 }
 
 div.LoginBox p:nth-last-child(1) { //selecciona cada <p> que sea el primer <p> de su padre, contando desde el ultimo hijo
@@ -36,7 +36,7 @@ div.LoginBox p:nth-last-child(1) { //selecciona cada <p> que sea el primer <p> d
     border: 1px solid var(--color-cards-lines);
     border-radius: 0.5rem;
     height: 3rem;
-    width: 70vw;
+    width: 100%;
 }
 .inputLogin > input::placeholder {
     color: var(--color-cards-lines);

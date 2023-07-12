@@ -11,6 +11,7 @@ const baseURL = 'https://pokeapi.co/api/v2';
 
 function MyProvider({ children }) {
   const [regions, setRegion] = useState([]);
+  const [leagueSelected, setLeagueSelected] = useState('leagueItem-1')
   const [generation, setGeneration] = useState(1);
   const [generationName, setGenerationName] = useState('KANTO');
   const [pokemons, setPokemons] = useState([]);
@@ -83,6 +84,7 @@ function MyProvider({ children }) {
       });
     }
   };
+
 
   const requestEvolutionchain = async (url) => {
     const evoChain = {
@@ -157,8 +159,8 @@ function MyProvider({ children }) {
         evoChainObj
       };
       setPokemonInfo(pokemonData);
-      console.log(`Esta es la info traida para ${name}`);
-      console.log(pokemonData);
+      // console.log(`Esta es la info traida para ${name}`);
+      // console.log(pokemonData);
       return pokemonData;
     }).catch(error => console.log(error));
   };
@@ -176,8 +178,8 @@ function MyProvider({ children }) {
       });
       objPokemons.sort((a, b) => a.id - b.id);
       setPokemons(objPokemons);
-      console.log(`La liga actual es ${generation}`);
-      console.log(objPokemons);
+      // console.log(`La liga actual es ${generation}`);
+      // console.log(objPokemons);
       setGeneration(generationValue);
       setPokemonsSearched(objPokemons);
       postGenerationName(generationValue);
@@ -194,6 +196,8 @@ function MyProvider({ children }) {
     pokemonInfo,
     urlForCard,
     orderedPokemon,
+    leagueSelected, 
+    setLeagueSelected,
     setRegion,
     setPokemons,
     setPokemonsSearched,

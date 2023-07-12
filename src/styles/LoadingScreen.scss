@@ -1,9 +1,11 @@
 @import 'vars';
 
 .LoadingScreen {
-    width: 100vw;
+    width: 80%;
+    max-width: 50rem;
     height: 100vh;
     background: var(--color-background);
     display: flex;
     align-items: center;
+    margin: 0 auto;
 }

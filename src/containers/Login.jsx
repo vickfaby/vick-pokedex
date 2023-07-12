@@ -25,42 +25,44 @@ function Login() {
         <p>Pokédex</p>
         <div className="orLine" />
       </div>
-      <LoginBox />
-      <button
-        onClick={() => goto('/loadingscreen')}
-        className="primaryButton"
-        type="submit"
-      >
-        Accept
-      </button>
-      <button className="secondaryButton" type="submit">
-        Cancel
-      </button>
+      <div className="LoginContent">
+        <LoginBox />
+        <button
+          onClick={() => goto('/loadingscreen')}
+          className="primaryButton"
+          type="submit"
+        >
+          Accept
+        </button>
+        <button className="secondaryButton" type="submit">
+          Cancel
+        </button>
 
-      <div className="orSeparator">
-        <div className="orLine" />
-        <span>OR</span>
-        <div className="orLine" />
-      </div>
+        <div className="orSeparator">
+          <div className="orLine" />
+          <span>OR</span>
+          <div className="orLine" />
+        </div>
 
-      <button className="tertiaryButton" type="submit">
-        Log in with Google
-      </button>
+        <button className="tertiaryButton" type="submit">
+          Log in with Google
+        </button>
 
-      <p>Have an account?</p>
-      <button
-        onClick={() => goto('/singup')}
-        className="tertiaryButton"
-        type="submit"
-      >
-        Sing up
-      </button>
+        <p>Have an account?</p>
+        <button
+          onClick={() => goto('/singup')}
+          className="tertiaryButton"
+          type="submit"
+        >
+          Sing up
+        </button>
 
-      <div className="info-policy">
-        <p>By singing up, yoy agree our </p>
-        <p>Terms of service</p>
-        <p>and</p>
-        <p onClick={() => goto('/privacypolicy')}>Privacy Policy.</p>
+        <div className="info-policy">
+          <p>By singing up, yoy agree our </p>
+          <p>Terms of service</p>
+          <p>and</p>
+          <p onClick={() => goto('/privacypolicy')}>Privacy Policy.</p>
+        </div>
       </div>
     </div>
   );

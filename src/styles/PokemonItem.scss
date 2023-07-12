@@ -24,6 +24,10 @@
   margin: 0.5rem;
 }
 
+.PokemonItem:hover {
+  cursor: pointer;
+}
+
 .LoadingSqueletonCirlce {
   width: 6rem;
   height: 6rem;
@@ -32,7 +36,7 @@
   background: var(--color-background-circle);
   border: 1px solid var(--color-cards-lines);
 
- animation: skeleton-loading 1s linear infinite alternate;
+  animation: skeleton-loading 1s linear infinite alternate;
 }
 
 .LoadingSqueletonBar {
