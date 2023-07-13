@@ -5,6 +5,7 @@ import '../styles/LeagueItem.scss';
 import { MyContext } from './MyProvider';
 
 function LeagueItem({ region, id }) {
+
   const { requestPokemon, regions, setLeagueSelected } = useContext(MyContext);
 
   const checkLeagueItem = () => {
@@ -27,6 +28,7 @@ function LeagueItem({ region, id }) {
         setLeagueSelected(`leagueItem-${id}`);
         checkLeagueItem();
       }}
+      style={(id === 1 )? {background:'#126979'} : {background: '#12222c'} }
     >
       <p>{region}</p>
     </div>

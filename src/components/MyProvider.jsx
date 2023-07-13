@@ -1,3 +1,4 @@
+/* eslint-disable no-await-in-loop */
 /* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/jsx-no-constructed-context-values */
@@ -72,17 +73,19 @@ function MyProvider({ children }) {
 
   const regionsCount = 9;
 
-  const requestRegions = () => {
+  const requestRegions = async () => {
     const generationNames = [];
-    for (let i = 1; i <= regionsCount; i += 1) {
-      axios.get(`${baseURL}/generation/${i}`).then((response) => {
+      for (let i = 1; i <= regionsCount; i += 1) {
+     await  axios.get(`${baseURL}/generation/${i}`).then((response) => {
         const data = response.data.main_region.name;
         generationNames.push(data);
-        setRegion(generationNames);
-        console.log('Se trajeron estas regiones:')
-        console.log(generationNames)
+        // console.log('Se trajeron estas regiones:')
+        // console.log(generationNames)
       });
     }
+    setRegion(generationNames);
+    // console.log('Se trajeron estas regiones:')
+    // console.log(generationNames)
   };
 
 
