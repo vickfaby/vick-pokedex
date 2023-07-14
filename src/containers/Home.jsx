@@ -1,9 +1,6 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable import/no-duplicates */
-/* eslint-disable react/no-unknown-property */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useContext, useEffect,} from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import '../styles/Home.scss';
 import HorizontalLine from '../components/HorizontalLine';
@@ -21,15 +18,14 @@ function Home() {
     setPokemonsSearched,
   } = useContext(MyContext);
 
-
   const filterPokemon = () => {
-    const text = document.getElementById('inputSearchPokemon');
+    const texto = document.getElementById('inputSearchPokemon').value;
     const newPokemons = pokemons.filter((pokemon) =>
-      pokemon.name.includes(text.value)
+      pokemon.name.includes(texto.toLowerCase())
     );
+
     setPokemonsSearched(newPokemons);
   };
-
 
   const navigate = useNavigate();
 
@@ -41,8 +37,6 @@ function Home() {
     requestRegions();
     requestPokemon(generation);
   }, []);
-
-
 
   const leagueItems = regions.map((region, i) => (
     <LeagueItem key={region} id={i + 1} region={region} />

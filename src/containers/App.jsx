@@ -9,7 +9,6 @@ import LoadingScreen from './LoadingScreen';
 import Home from './Home';
 import PokemonCard from './PokemonCard';
 import { MyProvider } from '../components/MyProvider';
-import '../styles/pruebaTransition.scss';
 import SingingUp from './SingingUp';
 
 function App() {

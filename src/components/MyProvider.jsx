@@ -1,8 +1,5 @@
 /* eslint-disable no-await-in-loop */
-/* eslint-disable no-console */
-/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/jsx-no-constructed-context-values */
-
 import axios from 'axios';
 import React, {  useState } from 'react';
 
