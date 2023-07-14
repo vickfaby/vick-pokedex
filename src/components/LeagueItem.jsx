@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useContext } from 'react';
+import React, { useContext} from 'react';
 import '../styles/LeagueItem.scss';
 import { MyContext } from './MyProvider';
 
 function LeagueItem({ region, id }) {
-  const { requestPokemon, regions, setLeagueSelected } = useContext(MyContext);
+  const { requestPokemon, regions, setLeagueSelected,leagueSelected } = useContext(MyContext);
 
   const checkLeagueItem = () => {
     for (let i = 1; i <= regions.length; i += 1) {
@@ -25,6 +25,7 @@ function LeagueItem({ region, id }) {
       'leagueItem-breath 0.5s linear infinite alternate';
   };
 
+
   return (
     <div
       className="LeagueItem"
@@ -35,7 +36,7 @@ function LeagueItem({ region, id }) {
         checkLeagueItem();
       }}
       style={
-        id === 1
+        `leagueItem-${id}` === leagueSelected
           ? {
               border: '4px solid var(--color-font-blue)',
               boxShadow: '0px 0px 5px var(--color-font-blue)',
