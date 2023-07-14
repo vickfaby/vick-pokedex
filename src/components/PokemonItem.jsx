@@ -68,7 +68,7 @@ function PokemonItem({ pokemonName, pokemonId }) {
                 id={idItemImage}
                 style={{ display: 'none' }}
                 src={url}
-                alt="pokemon"
+                alt={`pokemon de nombre ${pokemonName}`}
                 onLoad={show}
               />
 
