@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/vick-pokedex/static/css/main.909f9a81.css",
-    "main.js": "/vick-pokedex/static/js/main.d70196a5.js",
+    "main.css": "/vick-pokedex/static/css/main.d409e079.css",
+    "main.js": "/vick-pokedex/static/js/main.b20e78a7.js",
     "static/media/CenturyGothic.ttf": "/vick-pokedex/static/media/CenturyGothic.b1b792bab1bff8f27ba7.ttf",
     "index.html": "/vick-pokedex/index.html",
-    "main.909f9a81.css.map": "/vick-pokedex/static/css/main.909f9a81.css.map",
-    "main.d70196a5.js.map": "/vick-pokedex/static/js/main.d70196a5.js.map"
+    "main.d409e079.css.map": "/vick-pokedex/static/css/main.d409e079.css.map",
+    "main.b20e78a7.js.map": "/vick-pokedex/static/js/main.b20e78a7.js.map"
   },
   "entrypoints": [
-    "static/css/main.909f9a81.css",
-    "static/js/main.d70196a5.js"
+    "static/css/main.d409e079.css",
+    "static/js/main.b20e78a7.js"
   ]
 }
