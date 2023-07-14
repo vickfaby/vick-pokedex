@@ -10,6 +10,7 @@
   border-left: 1px solid var(--color-cards-lines);
   border-bottom: 1px solid var(--color-cards-lines);
   margin: 0 auto;
+  // transition: width 2s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 .pokemoncard__circlebackground {
   width: 100%;
@@ -34,7 +35,7 @@
 }
 
 .titlePokemonCard > span {
-  font-size: 2rem;
+  font-size: 3rem;
   margin: 0;
   z-index: 1;
 }

@@ -75,6 +75,7 @@ function PokemonCard() {
     console.log(`Se muestra imagen con id ${idImageCard}`);
   };
   useEffect(() => {
+
     if (pokemonSelected === 0) {
       goto('/home');
     }
@@ -83,7 +84,7 @@ function PokemonCard() {
   }, [pokemonInfo]);
 
   return (
-    <div className="PokemonCard">
+    <div className="PokemonCard" id='pokemonCard'>
       <div className="pokemoncard__circlebackground" />
       <div className="titlePokemonCard">
         <span

@@ -10,10 +10,17 @@
     justify-items: center;
     justify-content: space-evenly;
     grid-row-gap: 1rem;
+    height: calc(100% - 24px - 1rem);
+    overflow: scroll;
+    padding-bottom: 1rem;
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
 }
+.pokemons::-webkit-scrollbar { 
+    display: none; /* Safari and Chrome */
+  }
 .PokemonContainer{
-    //border: 1px solid var(--color-font-blue);
-    //margin: 0 1rem;
+    height: calc( 100vh - 13rem);
 }
 .PokemonContainer > h1 {
     color: var(--color-font-blue);
