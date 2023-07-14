@@ -29,7 +29,7 @@ function SingingUp() {
         </div>
 
         <button className="secondaryButton" type="submit">
-          Sing up in with google
+          Sign up with Google
         </button>
 
         <p>Have an account?</p>
